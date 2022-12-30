@@ -30,5 +30,37 @@ namespace FactGenerator.Core.Services
 
             return mapped;
         }
+
+        public FactDto GetFact(int id)
+        {
+            var fact = All().Where(e => e.Id == id).FirstOrDefault();
+
+            var mapped = _mapper.Map<FactDto>(fact);
+
+            return mapped;
+        }
+
+        public bool CreateFact(FactDto factDto)
+        {
+            var fact = _mapper.Map<Fact>(factDto);
+
+            Add(fact);
+
+            return true;
+        }
+
+        public void EditFact(FactDto factDto)
+        {
+            var fact = _mapper.Map<Fact>(factDto);
+
+            Update(fact);
+        }
+
+        public void DeleteFact(int id)
+        {
+            var fact = Get(id);
+
+            Delete(fact);
+        }
     }
 }
