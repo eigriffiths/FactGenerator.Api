@@ -10,6 +10,8 @@ var connString = builder.Configuration.GetConnectionString("FactGeneratorConnect
 // Add services to the container.
 
 builder.Services.AddControllers();
+// CORS
+builder.Services.AddCors();
 
 // AutoMapper
 var mappingConfig = new MapperConfiguration(mappingConfig =>
@@ -40,6 +42,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(options => options
+    .WithOrigins(new[] { "http://localhost:8080" })
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()
+);
 
 app.UseAuthorization();
 

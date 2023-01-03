@@ -27,7 +27,7 @@ namespace FactGenerator.Api.Controllers
         [HttpGet("getfact/{id}")]
         public IActionResult GetFact(int id)
         {
-            var fact = _factService.GetFact(id);            
+            var fact = _factService.GetFact(id);          
                 
             return Ok(fact);
         }

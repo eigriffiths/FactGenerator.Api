@@ -6,7 +6,6 @@ namespace FactGenerator.Core.Services.Interfaces
     {
         IEnumerable<FactDto> GetAllFacts();
         FactDto GetFact(int id);
-
         bool CreateFact(FactDto factDto);
         void EditFact(FactDto factDto);
         void DeleteFact(int id);
